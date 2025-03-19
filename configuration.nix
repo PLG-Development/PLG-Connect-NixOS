@@ -152,7 +152,9 @@
     startAt = "hourly";
     script = ''
       if ! git rev-parse --is-inside-work-tree; then
-        git clone https://github.com/PLG-Development/PLG-Connect-NixOS .
+        git clone https://github.com/PLG-Development/PLG-Connect-NixOS /tmp/plg-connect-nixos
+        mv -f /tmp/plg-connect-nixos/{,.[^.]}* .
+        rm -d /tmp/plg-connect-nixos
       fi
 
       git fetch
