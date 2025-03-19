@@ -123,7 +123,7 @@
       WorkingDirectory = "/home/tag";
     };
     path = [pkgs.git];
-    startAt = "1h";
+    startAt = "hourly";
     script = ''
       folder="PLG-Connect"
 
@@ -149,7 +149,7 @@
       WorkingDirectory = "/etc/nixos";
     };
     path = [pkgs.git pkgs.nixos-rebuild];
-    startAt = "1h";
+    startAt = "hourly";
     script = ''
       if ! git rev-parse --is-inside-work-tree; then
         git clone https://github.com/PLG-Development/PLG-Connect-NixOS .
