@@ -151,10 +151,11 @@
     path = [pkgs.git pkgs.nixos-rebuild];
     startAt = "hourly";
     script = ''
-      if ! git rev-parse --is-inside-work-tree; then
+      if ! git rev-parse --is-inside-work-tree &>/dev/null; then
         git clone https://github.com/PLG-Development/PLG-Connect-NixOS /tmp/plg-connect-nixos
         mv -f /tmp/plg-connect-nixos/{,.[^.]}* .
         rm -d /tmp/plg-connect-nixos
+        git config --add safe.directory /etc/nixos
       fi
 
       git fetch
